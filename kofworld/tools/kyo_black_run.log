@@ -1,0 +1,8 @@
+HTTP_ERROR 503 on attempt 1
+ERR_BODY: {"error":{"message":"image queue is full, please retry later (request id: 20261018125239477715601TTxXpb5l)","type":"","param":"","code":null}}
+BODY_BYTES_SENT: 166577
+REF_BYTES: 123782
+RETRY 1/8 in 90s...
+OK on attempt 2
+RAW_KEYS: {"url": "", "b64_json": "iVBORw0KGgoAAAANSUhEUgAAAuAAAAUgCAIAAACO83VkAAAN2XRFWHRwcm9t...", "revised_prompt": ""}
+SAVED(b64): D:/workspace/sgpro/sgshort_drama/kofworld/05_资产库/AI生成图/agnes\kyo_black.png

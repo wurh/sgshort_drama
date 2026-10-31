@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+media/
+data/
+.env
+.env.local
+*.sqlite
+*.sqlite-journal

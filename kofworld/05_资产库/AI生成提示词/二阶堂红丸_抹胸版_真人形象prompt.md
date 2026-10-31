@@ -80,3 +80,31 @@
 - **颜色铁律**：二阶堂红丸 = **黄白色电光（雷电）**；草薙京 = 红焰 / 八神庵 = 紫焰 / 椎拳崇 = 青白气旋，四者勿混色。出招镜头务必"电光非火"。
 - **两版造型**：KOF94 蓝背心版（蓝背心 + 蓝短裤 + 草鞋）见 `二阶堂红丸_真人形象prompt.md`；本版为**抹胸造型**（黑抹胸 + 米白长裤）。同一张脸、换服装。
 - **图生图铁律**：知名 IP 角色务必拿官方参照图做 image-to-image（`input_fidelity=medium`），别纯文字硬拍。
+
+---
+
+## 五、pavo / Agnes-Image-2.5-Flash 直接粘贴版 ⭐（本次满意那张图实际用的 prompt）
+
+> 这一节就是**实际出成"满意"那张二阶堂红丸真人图所用的 prompt**，可直接复制到 pavo 的 Agnes 图生图输入框。
+> **⚠️ 最关键的一步：务必同时上传官方参照图做"图生图"**（路径 `C:\Users\Administrator\.workbuddy\clipboard-images\clipboard-2026-10-18T11-27-04-209Z-a756ce39.png`）。
+> 之前在 pavo 上"严重不对"，根因就是**没上图生图、只用纯文字 + 默认现代都市风**，模型自由发挥成了"穿蓝背心短裤的都市青年"。
+
+### A. 正向提示词（粘到「提示词 / prompt」框）
+```
+Re-render this fighting character as a REAL adult Japanese-American mixed-heritage man in his early 20s, a natural candid documentary photograph on a 35mm film camera with subtle film grain and natural window side-lighting. Preserve his signature pose (both hands raised near his head) and outfit: BLOND spiky SHORT hair standing up with static flyaway strands (NOT long, NOT red), a black cropped sleeveless tank top revealing his toned midsection and abs, loose cream trousers with thin dark side stripes, black fingerless gloves with wrist wraps, a wide athletic stance, faint yellow-white ELECTRIC sparks at his fingertips. The face must be a naturally imperfect real adult male face: slight facial asymmetry, visible skin pores, fine lines under the eyes, a few natural skin blemishes, uneven skin tone, realistic skin texture, NOT airbrushed, NOT a 3d render, NOT plastic. Pure white seamless studio background, no cast shadow, soft natural side light. Full body.
+```
+
+### B. 反向提示词（粘到「反向 / negative」框；若 pavo 只有一个框，就把 A + 下面这段连起来粘）
+```
+no anime, no manga, no cartoon, no comic, no illustration, no 3d render, no cgi, no plastic skin, no airbrushed skin, no perfect symmetry, no video game render, no video game model, no cel shading, no fantasy glow, no aura, no game character, no face scars, no deformed hands, no extra fingers, no watermark, no text, no hyper-detailed, no 8k, no studio fashion portrait, no model, consistent facial identity
+```
+
+### C. 中文对照（给团队/沟通用）
+> **图生图**：把该格斗角色重渲染成一名**真实、20 岁上下的日美混血成年男性**，自然纪实抓拍、35mm 胶片相机、轻微胶片颗粒、自然侧窗光。**保留其招牌姿态（双手举至头旁）与服装**：金色竖立短发（静电飞起、非长发、非红发）、黑色抹胸无袖短上衣（露腰腹腹肌）、米白长裤（细深色侧条）、黑色露指手套 + 腕布、宽距马步站姿、指尖淡黄白电光。**脸必须是自然不完美的真人成年男性脸**：轻微不对称、可见毛孔、眼下细纹、少量自然瑕疵、肤色不均、真实皮肤质感，**不要磨皮、不要 3D 渲染、不要塑料感**。纯白无缝棚拍背景、无落地阴影、柔和自然侧光。全身。
+
+### D. pavo 参数建议
+- **参照图**：务必上传（图生图锚点，决定脸/姿态/配色还原度）。
+- **比例**：`9:16` 竖版（短剧角色立绘）。**尺寸**：先用 `1K` 验证，满意再上 `2K`（`2K` + 大 base64 偶尔触发队列满 503，见脚本自动重试逻辑）。
+- **出图不满意时的微调方向**：脸太 3D → 加大 C 段"真实瑕疵"描述比重；电光偏黄 → 把 `yellow-white` 改 `blue-white`；头发偏长 → 强化 `SHORT hair, NOT long`。
+
+> 同源脚本：`D:\workspace\sgpro\sgshort_drama\kofworld\tools\agnes_img2img.py`（内置 nikido/kyo_black/daimon 三段，一键跑 Agnes 图生图）。

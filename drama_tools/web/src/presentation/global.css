@@ -1,0 +1,92 @@
+/* 全局基础样式：深色底 + 隐藏滚动条抖动 + antd 局部微调 */
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #0a0b0c;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #e9ecee;
+}
+
+/* 细滚动条，贴合深色主题 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b3033;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4044;
+}
+
+/* 胶囊 Tab 的 antd Tabs 变体：去掉下划线，选中态用背景块 */
+.pill-tabs .ant-tabs-nav::before {
+  border-bottom: none !important;
+}
+.pill-tabs .ant-tabs-ink-bar {
+  display: none !important;
+}
+.pill-tabs .ant-tabs-tab {
+  padding: 4px 14px !important;
+  border-radius: 999px !important;
+  margin: 0 6px 0 0 !important;
+  transition: background 0.16s ease;
+}
+.pill-tabs .ant-tabs-tab:hover {
+  background: #1f2326;
+}
+.pill-tabs .ant-tabs-tab-active {
+  background: #262b2e;
+}
+.pill-tabs .ant-tabs-tab-btn {
+  color: #9aa1a6 !important;
+}
+.pill-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #e9ecee !important;
+}
+
+/* 卡片 hover 微抬升 */
+.hover-lift {
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  border-color: #3a4044 !important;
+}
+
+/* 图片骨架微光 */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(90deg, #16191b 25%, #1e2225 37%, #16191b 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}

@@ -12,10 +12,10 @@
 | 部位 | 真人化描述（写实） |
 |---|---|
 | 脸型 | 真实亚洲 20 岁男性面孔，**锋利下颌线**、薄唇、鼻梁挺直，皮肤有真实毛孔/质感，**一抹邪魅冷笑** |
-| 发型 | 深酒红色中短发，**厚重直刘海斜垂遮住左眼**（标志），两侧碎发贴颊，发丝根根分明（真人发质，非动画糊色块） |
+| 发型 | 深酒红色**中长发**（垂到耳后/后颈、下巴长度，非短寸），**厚重直刘海斜垂遮住左眼**（标志），两侧碎发贴颊，发丝根根分明（真人发质，非动画糊色块） |
 | 眼睛 | 冷窄上挑眼型，**瞳色紫罗兰**（写实镜头下偏深紫，冷冽） |
 | 体型 | 182cm 高瘦精壮，肩宽腰窄，肌肉线条真实（非漫画夸张） |
-| 外套 | 修身**黑色半扣立领皮/呢外套**，金纽扣，领口袖口微开衩，**背部中央一枚纤细白色月牙家纹** |
+| 外套 | 修身**纯黑（SOLID BLACK）半扣立领皮/呢外套**，金纽扣，领口袖口微开衩，**背部中央一枚纤细白色月牙家纹** |
 | 内衬 | 宽松**白长衬衫**长及大腿、前襟半扣，**露出胸口与腹肌**（真人肌理） |
 | 裤 | **酒红修长裤**，**胫部红色皮带交叉绑住双腿**（真人皮质道具） |
 | 鞋/配饰 | 黑短靴 + **颈戴黑 choker** + **右手无名指银戒** |
@@ -33,7 +33,7 @@
 > `no anime, no cartoon, no illustration, no 3d render, no cgi, no chibi, no cel shading, no manga, no painted, no game character, no face scars, no deformed hands, no extra fingers, no watermark, no text, no gore, no realistic blood, consistent facial identity`
 
 ### ① 全身·正面（真人锁脸基准，最优先出这张）
-`a real 20-year-old East Asian young man, 182cm tall lean athletic build, sharp jawline and thin lips with a subtle cruel smirk, deep wine-red short hair with thick straight front bangs falling across and COVERING his left eye, individual realistic hair strands, cold narrow upturned eyes with dark violet-purple irises, wearing a fitted black half-buttoned collar jacket with a thin white crescent-moon crest on the back, an open white long shirt reaching to the thighs partly exposing chest and abs, dark red trousers with a crossing red leather strap binding both shins, black choker, silver ring on the right ring finger, black boots, standing in a low crouched fighting stance, serious arrogant presence, realistic fabric and skin, cinematic` + 负面提示。
+`a real 20-year-old East Asian young man, 182cm tall lean athletic build, sharp jawline and thin lips with a subtle cruel smirk, deep wine-red LONG hair, chin-length falling behind the ears and over the nape, with thick straight front bangs falling across the face and COVERING his left eye, individual realistic hair strands, cold narrow upturned eyes with dark violet-purple irises, wearing a fitted SOLID BLACK half-buttoned collar jacket with a thin white crescent-moon crest on the back, an open white long shirt reaching to the thighs partly exposing chest and abs, dark red trousers with a crossing red leather strap binding both shins, black choker, silver ring on the right ring finger, black boots, standing in a low crouched fighting stance, serious arrogant presence, realistic fabric and skin, cinematic` + 负面提示。
 
 ### ② 近景·脸（眼神/邪笑，写实大头）
 `extreme close-up portrait of a real young East Asian man, only his RIGHT eye visible (left eye hidden under thick wine-red bangs), fierce dark violet eye glare, sharp jawline, a razor-thin malicious smirk, realistic skin texture with pores, natural skin tone, cinematic rim light, violet-purple flame reflections on his face, shallow depth of field` + 负面提示。
@@ -49,10 +49,22 @@
 
 ---
 
+## 三-A、图生图最佳实践（用本参照出"真·照片级"锁脸图）
+
+> 参照图（稳定路径）：`05_资产库/参考图/八神庵_经典款_参照.png`（KOF95–XI 经典款官方立绘）。
+> 引擎：Agnes-Image-2.5-Flash，image-to-image（`extra_body.image` 传参照 base64，`input_fidelity=low` 让脸/皮肤从真人文字重生成、不照抄立绘 3D 渲染脸），`response_format=b64_json` 落盘最稳。
+> 出图脚本：`tools/agnes_img2img.py`，角色 key = **iori**（已内置下方拟人化 prompt + 本地参照转 base64 + 503 队列忙自动重试 + b64 落盘）：
+> `python tools/agnes_img2img.py iori 2K 9:16`
+
+**Agnes 图生图 · 拟人化 prompt（可直接粘贴）**
+> Re-render this fighting character as a REAL lean East Asian young man in his early 20s, a natural candid documentary photograph on a 35mm film camera with subtle film grain and natural window side-lighting. Preserve his signature outfit and low crouched fighting stance: deep wine-red LONG hair, chin-length falling behind the ears and over the nape (NOT short-cropped), with thick straight front bangs falling across the face and FULLY COVERING his left eye (his signature), a fitted SOLID BLACK half-buttoned collar jacket with a thin white crescent-moon crest on the back, an open white long shirt reaching to the thighs, dark maroon-red trousers with a red leather strap binding the shins, black boots, a black choker, a silver ring on the right ring finger. Cold narrow upturned eyes, dark violet-purple irises, a sharp jawline and thin lips with a subtle cruel smirk. The face must be a naturally imperfect real adult male face: slight facial asymmetry, visible skin pores, fine lines under the eyes, a few natural skin blemishes, uneven skin tone, subtle stubble, realistic skin texture, NOT airbrushed, NOT a 3d render, NOT plastic. Pure white seamless studio background, no cast shadow, soft natural side light. Full body. NEGATIVE: no anime, no manga, no cartoon, no comic, no illustration, no 3d render, no cgi, no plastic skin, no airbrushed skin, no perfect symmetry, no video game render, no video game model, no cel shading, no fantasy glow, no aura, no game character, no face scars, no deformed hands, no extra fingers, no watermark, no text, no hyper-detailed, no 8k, no studio fashion portrait, no model, consistent facial identity
+
+---
+
 ## 三、中文描述版（国内图生图 / 团队沟通，写实口吻）
 
 **真人写实基准：**
-> 摄影级真实画面：一名 20 岁东亚青年男性，182cm 高瘦精壮、肩宽腰窄，**皮肤有真实毛孔与肌理、发丝根根分明（不是动漫糊色块）**。深酒红色短发，**厚重直刘海斜垂遮住左眼**，两侧碎发贴颊；锋利下颌、薄唇、**一抹邪魅冷笑**，眼型冷窄上挑、**瞳色深紫罗兰**。着修身**黑色半扣立领皮外套**（金纽扣、**背部一枚纤细白色月牙家纹**、领袖微开衩），内搭**宽松白长衬衫**（长及大腿、前襟半扣露出胸口与腹肌），**酒红长裤胫部红皮带交叉绑住双腿**，黑靴 + **黑 choker** + **右手无名指银戒**。气质寡言傲慢、压迫性强。
+> 摄影级真实画面：一名 20 岁东亚青年男性，182cm 高瘦精壮、肩宽腰窄，**皮肤有真实毛孔与肌理、发丝根根分明（不是动漫糊色块）**。深酒红色**中长发（垂到耳后/后颈）**，**厚重直刘海斜垂遮住左眼**，两侧碎发贴颊；锋利下颌、薄唇、**一抹邪魅冷笑**，眼型冷窄上挑、**瞳色深紫罗兰**。着修身**纯黑半扣立领皮外套**（金纽扣、**背部一枚纤细白色月牙家纹**、领袖微开衩），内搭**宽松白长衬衫**（长及大腿、前襟半扣露出胸口与腹肌），**酒红长裤胫部红皮带交叉绑住双腿**，黑靴 + **黑 choker** + **右手无名指银戒**。气质寡言傲慢、压迫性强。
 
 **出招（无式焚天）：**
 > 出招时拳风卷起**紫罗兰色火焰与火星**，拖出紫色光弧；火焰用体积光效表达、**不做实拍爆炸**；皮肤与衣物保持真实材质。
